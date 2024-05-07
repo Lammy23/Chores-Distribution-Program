@@ -24,8 +24,8 @@ start "" http://localhost:3000
 start "" http://localhost:15432/login?next=/
 
 # How to run
-# chmod +x docker_build_and_run.sh
-# ./docker_build_and_run.sh
+# chmod +x run_docker_windows/docker_build_and_run.sh
+# ./run_docker_windows/docker_build_and_run.sh
 
 # To tag images (for pushing to Docker Hub)
 docker tag weekly-chores-frontend:1.0 lammy23/weekly-chores-frontend:1.0

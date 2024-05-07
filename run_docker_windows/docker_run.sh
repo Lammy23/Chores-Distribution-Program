@@ -20,5 +20,5 @@ start "" http://localhost:3000
 start "" http://localhost:15432/login?next=/
 
 # How to run
-# chmod +x docker_run.sh
-# ./docker_run.sh
+# chmod +x run_docker_windows/docker_run.sh
+# ./run_docker_windows/docker_run.sh
