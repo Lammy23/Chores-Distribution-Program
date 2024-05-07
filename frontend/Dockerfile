@@ -14,7 +14,7 @@ EXPOSE 3000
 # Install dependencies
 RUN npm install
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "start", "--host", "0.0.0.0"]
 
 # Instructions to run (START HERE)
 # docker network create weekly-chores-network

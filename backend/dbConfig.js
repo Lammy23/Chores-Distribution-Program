@@ -1,8 +1,7 @@
 module.exports = {
   user: "postgres",
-  // host: "localhost", // If using local pc
-  host: "weekly-chores-database", // If using docker
+  host: "host.docker.internal", // If using local pc
   database: "weekly-chores",
   password: "appleseed",
-  port: 5432,
+  port: 5433,
 };

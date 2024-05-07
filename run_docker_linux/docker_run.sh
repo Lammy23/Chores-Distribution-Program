@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Stop and remove any existing containers
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
 # Run the frontend
 docker run --network weekly-chores-network --name weekly-chores-frontend -p 3000:3000 -d weekly-chores-frontend:1.0
 

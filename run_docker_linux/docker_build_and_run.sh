@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Pull required images
+docker pull postgres:latest
+docker pull node:latest
+docker pull dpage/pgadmin4
+
+# Stop and remove any existing containers
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
 # Create network
 docker network create weekly-chores-network
 

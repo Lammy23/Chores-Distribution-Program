@@ -1,7 +1,6 @@
 import { getRandomMonday, getRandomSunday } from "./helpers";
 
-// const API_URL = "http://localhost:8000"; // If using local pc
-const API_URL = "http://weekly-chores-api:8000"; // If using docker
+const API_URL = "http://localhost:8000"; // If using local pc
 
 function getAllChores(setAllChores, setError, setLoading) {
   console.log("getAllChores operation started!"); // DEBUG

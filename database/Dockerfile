@@ -7,6 +7,8 @@ WORKDIR /docker-entrypoint-initdb.d
 # Set environment variables
 ENV POSTGRES_PASSWORD=appleseed
 
+# remember to set host to host.docker.internal in dbConfig.js
+
 # Copy the current directory contents into the container at /docker-entrypoint-initdb.d
 # The psql-create-database.sql runs when the container launches
 COPY . /docker-entrypoint-initdb.d

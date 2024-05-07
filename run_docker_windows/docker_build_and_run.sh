@@ -2,6 +2,10 @@
 
 cd ..
 
+# Stop and remove any existing containers
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
 # Create network
 docker network create weekly-chores-network
 
