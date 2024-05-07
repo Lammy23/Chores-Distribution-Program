@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ..
-
 # Stop and remove existing containers
 docker-compose down
 
@@ -13,5 +11,5 @@ start "" http://localhost:3000
 start "" http://localhost:15432/login?next=/
 
 # How to run
-# chmod +x run_docker_windows/docker_run.sh
-# ./run_docker_windows/docker_run.sh
+# chmod +x docker_run_windows.sh
+# ./docker_run_windows.sh

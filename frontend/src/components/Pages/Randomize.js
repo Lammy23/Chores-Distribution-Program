@@ -46,6 +46,7 @@ function Randomize() {
   const [cardLoading, setCardLoading] = useState(false);
   const [pageError, setPageError] = useState("");
   const [checking, setChecking] = useState(true);
+  const [ValidDay, setValidDay] = useState(true);
 
   useEffect(() => {
     // Reassignments
@@ -57,8 +58,16 @@ function Randomize() {
     if (allChores.length === 0)
       getAllChores(setAllChores, setCardError, setCardLoading);
 
-    // Update random status for today
-    getRandomizedStatusForDay(today, setRandomized, setPageError);
+
+
+    // Check if today is valid
+    if (today > 2) {
+      setValidDay(false);
+    } else {
+      // Update random status for today
+      getRandomizedStatusForDay(today, setRandomized, setPageError);
+    }
+
 
     setTimeout(() => {
       setChecking(false);
@@ -79,6 +88,15 @@ function Randomize() {
         <p style={styles.error}>{pageError}</p>
       </>
     );
+  }
+  if (!ValidDay) {
+    return (
+      <>
+        <Header />
+        <p style={styles.error}>No randomization today</p>
+      </>
+    );
+
   }
   return (
     <>
