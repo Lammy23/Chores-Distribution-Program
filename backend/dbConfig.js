@@ -4,5 +4,5 @@ module.exports = {
   host: "weekly-chores-database", // If using docker
   database: "weekly-chores",
   password: "appleseed",
-  port: 5432,
+  port: 5433,
 };
