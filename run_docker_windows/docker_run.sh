@@ -2,6 +2,9 @@
 
 cd ..
 
+# Stop and remove existing containers
+docker-compose down
+
 # run docker-compose
 docker-compose up -d
 
