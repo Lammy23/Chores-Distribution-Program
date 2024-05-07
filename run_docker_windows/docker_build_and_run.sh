@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 # Create network
 docker network create weekly-chores-network
 
@@ -9,7 +11,7 @@ docker run --network weekly-chores-network --name weekly-chores-frontend -p 3000
 
 # Build and run the database
 docker build -t weekly-chores-database:1.0 database/.
-docker run --network weekly-chores-network --name weekly-chores-database -p 5433:5433 -d weekly-chores-database:1.0
+docker run --network weekly-chores-network --name weekly-chores-database -p 5433:5432 -d weekly-chores-database:1.0
 
 # Build and run the backend
 docker build -t weekly-chores-api:1.0 backend/.
