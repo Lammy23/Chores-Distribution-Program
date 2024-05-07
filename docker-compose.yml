@@ -3,38 +3,33 @@ services:
   database:
     build: ./database
     ports:
-      - 5433:5432
+      - "0.0.0.0:5433:5432"
     networks:
       - weekly-chores-network
-
   database-interface:
     build: ./database_interface
     ports:
-      - 15432:80
+      - "0.0.0.0:15432:80"
     networks:
       - weekly-chores-network
     depends_on:
       - database
-
   api:
     build: ./backend
     ports:
-      - 8000:8000
+      - "0.0.0.0:8000:8000"
     networks:
       - weekly-chores-network
     depends_on:
       - database
-
   frontend:
     build: ./frontend
     ports:
-      - 3000:3000
+      - "0.0.0.0:3000:3000"
     networks:
       - weekly-chores-network
     depends_on:
       - api
-      - database
-
 networks:
   weekly-chores-network:
     driver: bridge
