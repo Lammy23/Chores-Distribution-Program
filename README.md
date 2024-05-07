@@ -21,3 +21,8 @@ apiService.js
 ```javascript
 const API_URL = "http://localhost:8000";
 ```
+
+## How to run
+```bash
+docker-compose up
+```

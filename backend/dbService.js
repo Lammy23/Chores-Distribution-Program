@@ -4,7 +4,7 @@ const getAllChores = (_, res) => {
   try {
     choreQuery = "SELECT * FROM days ORDER BY day_id ASC"; // To ensure Sunday is first
     client.query(choreQuery, (err, data) => {
-      if (err) throw err;
+      if (err) console.error(err);
       var choreList = data.rows;
       choreList = choreList.map((chores) => {
         const { day, sweeping_and_mopping, cleaning_cooker, washing, rinsing } =
@@ -35,7 +35,7 @@ const getChoresForDay = (req, res) => {
     const { dayID } = req.params; // extracting the id
     const dayQuery = "SELECT * FROM days WHERE day_id = $1";
     client.query(dayQuery, [dayID], (err, data) => {
-      if (err) throw err;
+      if (err) console.error(err);
       const { day, sweeping_and_mopping, cleaning_cooker, washing, rinsing } =
         data.rows[0];
       res.status(200).send({
@@ -62,7 +62,7 @@ const getRandomizedStatusForDay = (req, res) => {
     const { dayID } = req.params;
     const randomizeQuery = "SELECT randomized FROM days WHERE day_id = $1";
     client.query(randomizeQuery, [dayID], (err, data) => {
-      if (err) throw err;
+      if (err) console.error(err);
       res.status(200).send({
         err: null,
         randomizeBool: data.rows[0].randomized,
@@ -86,7 +86,7 @@ const updateChoresForDay = (req, res) => {
       dayQuery,
       [sweepingAndMopping, cleaningCooker, washing, rinsing, dayID],
       (err, data) => {
-        if (err) throw err;
+        if (err) console.error(err);
         res.status(201).send({
           err: null,
           message: "Update chores",
@@ -109,7 +109,7 @@ const weeklyCleanup = (_, res) => {
     const randomizeQuery = "UPDATE days SET randomized = false";
 
     client.query(`${unassignQuery};${randomizeQuery}`, (err, data) => {
-      if (err) throw err;
+      if (err) console.error(err);
       res.status(201).send({
         err: null,
         message: "Cleanup Complete",
@@ -129,7 +129,7 @@ const setRandomizedForDay = (req, res) => {
     const { randomizeBool } = req.body;
     const randomizeQuery = "UPDATE days SET randomized = $1 WHERE day_id = $2";
     client.query(randomizeQuery, [randomizeBool, dayID], (err, data) => {
-      if (err) throw err;
+      if (err) console.error(err);
       res.status(201).send({
         err: null,
         message: "Randomized status updated",
