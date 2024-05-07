@@ -4,7 +4,7 @@
 docker-compose down
 
 # run docker-compose
-docker-compose up -d
+docker-compose up --build -d
 
 # Open the frontend in the default web browser
 start "" http://localhost:3000

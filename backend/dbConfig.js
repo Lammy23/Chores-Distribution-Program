@@ -1,7 +1,7 @@
 module.exports = {
-  user: "postgres",
-  host: "host.docker.internal", // If using local pc
-  database: "weekly-chores",
-  password: "appleseed",
-  port: 5433,
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_HOST || "localhost",
+  database: process.env.DB_NAME || "weekly-chores",
+  password: process.env.DB_PASSWORD || "appleseed",
+  port: process.env.DB_PORT || 5432,
 };

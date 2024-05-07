@@ -1,35 +1,46 @@
-version: '3'
+name: weekly-chores
+
 services:
   database:
     build: ./database
+    restart: always
     ports:
-      - "0.0.0.0:5433:5432"
-    networks:
-      - weekly-chores-network
-  database-interface:
-    build: ./database_interface
+      - 0.0.0.0:5433:5432
+    environment:
+      - POSTGRES_PASSWORD=appleseed
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  pgadmin:
+    build: ./pgAdmin
+    restart: always
     ports:
-      - "0.0.0.0:15432:80"
-    networks:
-      - weekly-chores-network
+      - 0.0.0.0:15432:80
     depends_on:
       - database
+
   api:
     build: ./backend
     ports:
-      - "0.0.0.0:8000:8000"
-    networks:
-      - weekly-chores-network
+      - 0.0.0.0:8000:8000
     depends_on:
       - database
+
+    environment:
+      - DB_USER=postgres
+      - DB_HOST=host.docker.internal # host.docker.internal
+      - DB_NAME=weekly-chores
+      - DB_PASSWORD=appleseed
+      - DB_PORT=5433
+
   frontend:
     build: ./frontend
     ports:
-      - "0.0.0.0:3000:3000"
-    networks:
-      - weekly-chores-network
+      - 0.0.0.0:3000:3000
     depends_on:
       - api
-networks:
-  weekly-chores-network:
-    driver: bridge
+    environment:
+      - API_URL=http://api:8000
+
+volumes:
+  db-data:

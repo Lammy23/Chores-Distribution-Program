@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 
 # Copy everything apart from node_modules
 COPY index.js ./weekly-chores-backend/

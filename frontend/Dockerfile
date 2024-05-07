@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 
 # Copy everything apart from node_modules
 COPY public/ ./weekly-chores-frontend/public
@@ -14,7 +14,7 @@ EXPOSE 3000
 # Install dependencies
 RUN npm install
 
-CMD [ "npm", "start", "--host", "0.0.0.0"]
+CMD [ "npm", "start" ]
 
 # Instructions to run (START HERE)
 # docker network create weekly-chores-network
