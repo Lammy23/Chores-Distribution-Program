@@ -21,7 +21,7 @@ docker run --network weekly-chores-network --name weekly-chores-database-interfa
 
 # Open the frontend in the default web browser
 start "" http://localhost:3000
-start "" http://localhost:15432
+start "" http://localhost:15432/login?next=/
 
 # How to run
 # chmod +x docker_run.sh
