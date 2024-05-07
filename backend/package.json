@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for weekly chores distribution app",
+  "author": "Olamikun <lammyaluko@gmail.com>",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "node-cron": "^3.0.3",
+    "pg": "^8.11.5",
+    "pino": "^9.0.0",
+    "pino-http": "^9.0.0",
+    "pino-pretty": "^11.0.0"
+  }
+}
