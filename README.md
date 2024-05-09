@@ -26,3 +26,13 @@ const API_URL = "http://localhost:8000";
 ```bash
 docker-compose up
 ```
+
+problems:
+i probed with date command and found that docker containers were in a different timezone. crons schedules no work.
+solution:
+```yml
+services:
+  your-service:
+    environment:
+      - TZ=America/Edmonton
+```
