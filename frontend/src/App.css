@@ -1,29 +1,180 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background-color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  display: grid;
+  grid-template-columns: 6rem 6rem 6rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 6rem 2rem 6rem;
+  width: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.link {
+  color: white;
+  text-decoration: none;
+  font-family: Sulphur Point;
+  font-size: 1rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+p {
+  font-family: Sulphur Point;
+  font-size: 1rem;
+}
+
+.long-version {
+  display: block;
+}
+
+.short-version {
+  display: none;
+}
+
+.big-text {
+  font-family: Sulphur Point;
+  font-size: 3rem;
+}
+
+.small-text {
+  font-family: Sulphur Point;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+  font-family: Sulphur Point;
+  font-size: 1rem;
+}
+
+.main-div {
+  display: grid;
+  grid-gap: 3rem;
+  padding: 4rem 3rem 4rem 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  background-color: white;
+  border-radius: 2rem 2rem 0px 0px;
+  min-height: 75vh;
+}
+
+.row-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.center-div {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+/* Chore card */
+.card-rectangle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  justify-self: center;
+  background-color: black;
+  width: 30rem;
+  height: 15rem;
+  border-radius: 1rem;
+  padding: 2rem 3rem 2rem 3rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.splitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/*Refresh button */
+.refresh-button {
+  background-color: black;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  padding: 2rem 6rem 2rem 6rem;
+  /* margin: 2rem 0rem 0rem 0rem; */
+}
+
+@media screen and (max-width: 768px) {
+  .main-div {
+    display: grid;
+    grid-gap: 3rem;
+    padding: 4rem 3rem 4rem 3rem;
+    margin: 0px;
+    background-color: white;
+    border-radius: 2rem 2rem 0px 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-rectangle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 16rem;
+    /* height: 15rem; */
+    border-radius: 1rem;
+    padding: 2rem 3rem 2rem 3rem;
+    color: white;
+  }
+
+  .long-version {
+    display: none;
+  }
+
+  .short-version {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    padding: 2rem 4rem 2rem 4rem;
+  }
+
+  .big-text {
+    font-family: Sulphur Point;
+    font-size: 2rem;
+  }
+
+
 }
