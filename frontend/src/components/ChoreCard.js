@@ -8,8 +8,7 @@ function ChoreCard({ assignments, loading, error }) {
   if (loading || (assignments === undefined && !error)) {
     // If loading is true, the spinner will be displayed
     return (
-      <div className="card-rectangle">
-        <p className="card-day">Loading...</p>
+      <div className="card-rectangle" style={{ justifyContent: "center" }}>
         <Oval
           visible={true}
           height="80"
@@ -25,8 +24,7 @@ function ChoreCard({ assignments, loading, error }) {
   }
   if (error) {
     return (
-      <div className="card-rectangle">
-        <p className="day-text">{"Something went wrong."}</p>
+      <div className="card-rectangle" style={{ justifyContent: "center" }}>
         <p>{error}</p>
       </div>
     );
@@ -38,10 +36,14 @@ function ChoreCard({ assignments, loading, error }) {
       <p className="big-text">{!error ? day : "Something went wrong."}</p>
       <div className="splitter">
         <div className="column-div">
-          <p>Sweeping and Mopping</p>
-          <p>Cleaning Cooker</p>
-          <p>Washing</p>
-          <p>Rinsing</p>
+          <p className="long-version">Sweeping and Mopping</p>{" "}
+          <p className="short-version">S & M</p>
+          <p className="long-version">Cleaning Cooker</p>{" "}
+          <p className="short-version">Cooker</p>
+          <p className="long-version">Washing</p>{" "}
+          <p className="short-version">Wash</p>
+          <p className="long-version">Rinsing</p>{" "}
+          <p className="short-version">Rinse</p>
         </div>
         <div className="column-div">
           <p>{sweepingAndMopping}</p>

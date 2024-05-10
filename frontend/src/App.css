@@ -9,18 +9,19 @@ html {
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 6rem 6rem 6rem;
+  justify-content: center;
   align-items: center;
   padding: 2rem 6rem 2rem 6rem;
+  width: 50%;
 }
 
 .link {
   color: white;
   text-decoration: none;
   font-family: Sulphur Point;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .link:hover {
@@ -29,12 +30,20 @@ header {
 
 p {
   font-family: Sulphur Point;
-  font-size: 2rem;
+  font-size: 1rem;
+}
+
+.long-version {
+  display: block;
+}
+
+.short-version {
+  display: none;
 }
 
 .big-text {
   font-family: Sulphur Point;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .small-text {
@@ -45,7 +54,7 @@ p {
 .error {
   color: red;
   font-family: Sulphur Point;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .main-div {
@@ -55,7 +64,8 @@ p {
   margin-left: 3rem;
   margin-right: 3rem;
   background-color: white;
-  border-radius: 2rem;
+  border-radius: 2rem 2rem 0px 0px;
+  min-height: 75vh;
 }
 
 .row-div {
@@ -69,15 +79,25 @@ p {
   flex-direction: column;
 }
 
+.center-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Chore card */
 .card-rectangle {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  justify-self: center;
   background-color: black;
-  height: 465px;
-  border-radius: 35.02px;
-  padding: 0px 91.67px 0px 91.67px;
+  width: 30rem;
+  height: 15rem;
+  border-radius: 1rem;
+  padding: 2rem 3rem 2rem 3rem;
   color: white;
 }
 
@@ -86,6 +106,16 @@ p {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+}
+
+/*Refresh button */
+.refresh-button {
+  background-color: black;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
 }
 
 footer {
@@ -98,42 +128,53 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-  header {
-    display: grid;
-    grid-gap: 1rem;
-    justify-content: space-between;
-    align-items: start;
-    padding: 2rem 6rem 2rem 6rem;
-  }
-
-  .link {
-    color: white;
-    text-decoration: none;
-    font-family: Sulphur Point;
-    font-size: 2rem;
-    border-bottom: 1px solid white;
-  }
-
   .main-div {
-    margin: 2rem 3rem 0rem 3rem;
+    display: grid;
+    grid-gap: 3rem;
+    padding: 4rem 3rem 4rem 3rem;
+    margin: 0px;
+    background-color: white;
+    border-radius: 2rem 2rem 0px 0px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-rectangle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    width: 16rem;
+    /* height: 15rem; */
+    border-radius: 1rem;
+    padding: 2rem 3rem 2rem 3rem;
+    color: white;
+  }
+
+  .long-version {
+    display: none;
+  }
+
+  .short-version {
+    display: block;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .link {
-    color: white;
-    text-decoration: none;
-    font-family: Sulphur Point;
-    font-size: 1.5rem;
-    border-bottom: 1px solid white;
+  header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: start;
+    padding: 2rem 4rem 2rem 4rem;
   }
 
-  p {
+  .big-text {
     font-family: Sulphur Point;
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
-  .main-div {
-    margin: 1rem 2rem 0rem 2rem;
-  }
+
 }

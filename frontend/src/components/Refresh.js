@@ -6,18 +6,18 @@ import { getAllChores } from "../services/apiService";
 import { useChoresContext } from "./context/choresContext";
 import "./Components.css";
 
-const styles = {
-  div: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-    borderRadius: "5px",
-    width: "56.66px",
-    height: "56.66px",
-  },
-};
+// const styles = {
+//   div: {
+//     display: "flex",
+//     flexDirection: "row",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "black",
+//     borderRadius: "5px",
+//     width: "56.66px",
+//     height: "56.66px",
+//   },
+// };
 
 function Refresh({ setError, setLoading }) {
   const { setAllChores } = useChoresContext();
@@ -31,7 +31,7 @@ function Refresh({ setError, setLoading }) {
 
   return (
     <div
-      style={styles.div}
+      className="refresh-button"
       onClick={() => {
         handleRefresh(setSpin, setAllChores, setError, setLoading);
       }}
@@ -39,7 +39,6 @@ function Refresh({ setError, setLoading }) {
       <FontAwesomeIcon
         className={spin ? "refresh" : ""}
         icon={faRotateRight}
-        size="2xl"
         style={{ color: "white" }}
       />
     </div>

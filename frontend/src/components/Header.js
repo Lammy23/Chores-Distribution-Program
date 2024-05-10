@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Creating header component
 function Header() {
   return (
+    <div className="center-div">
     <header>
       <Link className="link" to="/day">
         Day
@@ -15,6 +16,8 @@ function Header() {
         Randomize
       </Link>
     </header>
+    </div>
+
   );
 }
 
