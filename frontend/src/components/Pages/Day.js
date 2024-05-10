@@ -6,20 +6,7 @@ import { getAllChores } from "../../services/apiService.js";
 import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
 import Fetching from "../Fetching.js";
-
-const styles = {
-  p: {
-    fontFamily: "Sulphur Point",
-    fontSize: "35.02px",
-    margin: "35.02px 92px 0px 92px",
-  },
-
-  row: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-};
+import Footer from "../Footer.js";
 
 function Day() {
   const { today, setToday, allChores, setAllChores, time } = useChoresContext();
@@ -66,11 +53,11 @@ function Day() {
   return (
     <>
       <Header />
-      <div style={styles.center}>
+      <div className="main-div">
         {today !== 7 ? (
           <>
-            <div style={styles.row}>
-              <p style={styles.p}>The chores for today are</p>
+            <div className="row-div">
+              <p>The chores for today are</p>
               <Refresh setError={setError} setLoading={setLoading} />
             </div>
 
@@ -82,10 +69,11 @@ function Day() {
           </>
         ) : (
           <>
-            <p style={styles.p}>No chores for today</p>
+            <p>No chores for today</p>
           </>
         )}
       </div>
+      <Footer />
     </>
   );
 }

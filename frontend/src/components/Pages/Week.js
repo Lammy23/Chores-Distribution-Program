@@ -8,31 +8,7 @@ import { Oval } from "react-loader-spinner";
 import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
 import Fetching from "../Fetching.js";
-
-const styles = {
-  p: {
-    fontFamily: "Sulphur Point",
-    fontSize: "35.02px",
-    margin: "35.02px 92px 0px 92px",
-  },
-
-  error: {
-    fontFamily: "Sulphur Point",
-    fontSize: "35.02px",
-    color: "red",
-    margin: "35.02px 92px 0px 92px",
-  },
-
-  row: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
-  loading: {
-    margin: "35.02px 92px 0px 92px",
-  },
-};
+import Footer from "../Footer.js";
 
 function Week() {
   const { allChores, setAllChores, today, setToday, time } = useChoresContext();
@@ -68,32 +44,32 @@ function Week() {
   return (
     <>
       <Header />
-      <div>
-        <div style={styles.row}>
-          <p style={styles.p}>The chores for the week are</p>
+      <div className="main-div">
+        <div className="row-div">
+          <p>The chores for the week are</p>
           <Refresh setError={setError} setLoading={setLoading} />
         </div>
+
         {loading ? (
-          <div style={styles.loading}>
-            <Oval
-              visible={true}
-              height="80"
-              width="80"
-              color="black"
-              secondaryColor="black"
-              ariaLabel="oval-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </div>
+          <Oval
+            visible={true}
+            height="80"
+            width="80"
+            color="black"
+            secondaryColor="black"
+            ariaLabel="oval-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
         ) : !error ? (
           allChores.map((chores) => (
             <ChoreCard key={chores.day} assignments={chores} />
           ))
         ) : (
-          <p style={styles.error}>{error}</p>
+          <p className="error">{error}</p>
         )}
       </div>
+      <Footer />
     </>
   );
 }

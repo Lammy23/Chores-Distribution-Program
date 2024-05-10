@@ -1,29 +1,139 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background-color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 6rem 2rem 6rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.link {
+  color: white;
+  text-decoration: none;
+  font-family: Sulphur Point;
+  font-size: 2rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+p {
+  font-family: Sulphur Point;
+  font-size: 2rem;
+}
+
+.big-text {
+  font-family: Sulphur Point;
+  font-size: 4rem;
+}
+
+.small-text {
+  font-family: Sulphur Point;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+  font-family: Sulphur Point;
+  font-size: 2rem;
+}
+
+.main-div {
+  display: grid;
+  grid-gap: 3rem;
+  padding: 4rem 3rem 4rem 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  background-color: white;
+  border-radius: 2rem;
+}
+
+.row-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.column-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.card-rectangle {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: black;
+  height: 465px;
+  border-radius: 35.02px;
+  padding: 0px 91.67px 0px 91.67px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.splitter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+  padding: 2rem 6rem 2rem 6rem;
+  /* margin: 2rem 0rem 0rem 0rem; */
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    display: grid;
+    grid-gap: 1rem;
+    justify-content: space-between;
+    align-items: start;
+    padding: 2rem 6rem 2rem 6rem;
+  }
+
+  .link {
+    color: white;
+    text-decoration: none;
+    font-family: Sulphur Point;
+    font-size: 2rem;
+    border-bottom: 1px solid white;
+  }
+
+  .main-div {
+    margin: 2rem 3rem 0rem 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .link {
+    color: white;
+    text-decoration: none;
+    font-family: Sulphur Point;
+    font-size: 1.5rem;
+    border-bottom: 1px solid white;
+  }
+
+  p {
+    font-family: Sulphur Point;
+    font-size: 1rem;
+  }
+
+  .main-div {
+    margin: 1rem 2rem 0rem 2rem;
+  }
 }

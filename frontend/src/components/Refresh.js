@@ -16,7 +16,6 @@ const styles = {
     borderRadius: "5px",
     width: "56.66px",
     height: "56.66px",
-    margin: "35.02px 92px 0px 92px",
   },
 };
 
