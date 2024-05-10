@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const ChoresContext = createContext();
 
@@ -17,27 +17,14 @@ export const ChoresProvider = ({ children }) => {
   const [allChores, setAllChores] = useState(
     JSON.parse(sessionStorage.getItem("allChores")) || []
   ); // empty list default
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 60000); // Update time every minute
-
-    return () => {
-      clearInterval(timer); // Cleanup on unmount
-    };
-  }, []);
 
   return (
     <ChoresContext.Provider
       value={{
         today,
         allChores,
-        time,
         setToday,
         setAllChores,
-        setTime,
       }}
     >
       {children}
