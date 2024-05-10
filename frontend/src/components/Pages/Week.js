@@ -7,14 +7,12 @@ import { getAllChores } from "../../services/apiService.js";
 import { Oval } from "react-loader-spinner";
 import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
-import Fetching from "../Fetching.js";
 import Footer from "../Footer.js";
 
 function Week() {
-  const { allChores, setAllChores, today, setToday, time } = useChoresContext();
+  const { allChores, setAllChores, today, setToday } = useChoresContext();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [checking, setChecking] = useState(false);
 
   // Change chores on day change
   useEffect(() => {
@@ -24,23 +22,7 @@ function Week() {
     }
     if (allChores.length === 0)
       getAllChores(setAllChores, setError, setLoading);
-
-    if (time.getHours() === 0 && time.getMinutes() === 1) {
-      setChecking(true);
-      getAllChores(setAllChores, setError, setLoading);
-      setTimeout(() => {
-        setChecking(false);
-      }, 3000);
-    }
-  }, [setToday, setAllChores, today, allChores.length, time]);
-  if (checking) {
-    return (
-      <>
-        <Header />
-        <Fetching text="Fetching chores for the week" />
-      </>
-    );
-  }
+  }, [setToday, setAllChores, today, allChores.length]);
   return (
     <>
       <Header />

@@ -5,14 +5,12 @@ import { useChoresContext } from "../context/choresContext.js";
 import { getAllChores } from "../../services/apiService.js";
 import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
-import Fetching from "../Fetching.js";
 import Footer from "../Footer.js";
 
 function Day() {
-  const { today, setToday, allChores, setAllChores, time } = useChoresContext();
+  const { today, setToday, allChores, setAllChores } = useChoresContext();
   const [loading, setLoading] = useState(false); // calls for useEffect
   const [error, setError] = useState(""); // calls for useEffect
-  const [checking, setChecking] = useState(false);
 
   // Define behaviour of the day card
   useEffect(() => {
@@ -23,32 +21,13 @@ function Day() {
     }
     if (allChores.length === 0)
       getAllChores(setAllChores, setError, setLoading);
-
-    // if the time is 12:01am, refresh the chores on this page
-    // import Fetching with text "Fetching chores for today"
-    if (time.getHours() === 0 && time.getMinutes() === 1) {
-      setChecking(true);
-      getAllChores(setAllChores, setError, setLoading);
-      setTimeout(() => {
-        setChecking(false);
-      }, 3000);
-    }
-  }, [today, setToday, setAllChores, allChores.length, time]);
+  }, [today, setToday, setAllChores, allChores.length]);
 
   // DEBUG
   // console.log("allchores", allChores);
   // console.log("today", today);
   // console.log("gettodaynum", getTodayNum());
   // console.log("loading", loading);
-
-  if (checking) {
-    return (
-      <>
-        <Header />
-        <Fetching text="Fetching chores for today" />
-      </>
-    );
-  }
 
   return (
     <>
