@@ -33,18 +33,9 @@ function Week() {
         </div>
 
         {loading ? (
-          <div style={{ justifySelf: "center" }}>
-            <Oval
-              visible={true}
-              height="80"
-              width="80"
-              color="black"
-              secondaryColor="black"
-              ariaLabel="oval-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </div>
+          allChores.map((chores) => (
+            <ChoreCard key={chores.day} assignments={chores} loading={true}/>
+          ))
         ) : !error ? (
           allChores.map((chores) => (
             <ChoreCard key={chores.day} assignments={chores} />
