@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // Schedules
-cron.schedule("0 0 * * 6", () => cronJobs.cleanup(PORT));
+cron.schedule("0 12 * * 6", () => cronJobs.cleanup(PORT));
 cron.schedule("0 0 * * 2,3,4,5", () => cronJobs.dailyAssign(PORT));
 cron.schedule("59 23 * * 0,1", () => cronJobs.randomizeAnyway(PORT));
 
