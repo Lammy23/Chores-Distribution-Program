@@ -1,6 +1,7 @@
 import { getRandomMonday, getRandomSunday } from "./helpers";
 
-const API_URL = process.env.API_URL || "http://192.168.1.162:8000" || "http://localhost:8000";
+const API_URL =
+  process.env.API_URL || "http://192.168.1.162:8000" || "http://localhost:8000";
 
 function getAllChores(setAllChores, setError, setLoading) {
   console.log("getAllChores operation started!"); // DEBUG
@@ -28,9 +29,7 @@ function getAllChores(setAllChores, setError, setLoading) {
     })
     .finally(() => {
       if (setLoading) {
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
+        setLoading(false);
       }
       console.log("getAllChores operation complete!"); // DEBUG
     });

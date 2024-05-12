@@ -41,10 +41,7 @@ function Randomize() {
       // Update random status for today
       getRandomizedStatusForDay(today, setRandomized, setPageError);
     }
-
-    setTimeout(() => {
       setChecking(false);
-    }, 3000);
   }, [today, setToday, setAllChores, allChores.length, allChores]);
 
   return (
@@ -52,11 +49,11 @@ function Randomize() {
       <Header />
       <div className="main-div">
         {checking ? (
-          <Fetching text={"Checking randomize status"} />
+          <Fetching />
         ) : pageError ? (
           <p className="error">{pageError}</p>
         ) : !ValidDay ? (
-          <p className="error">No randomization today</p>
+          <p>No randomization today</p>
         ) : !randomized ? (
           <>
             <div className="row-div">
@@ -77,7 +74,6 @@ function Randomize() {
               You have not yet assigned chores for today <br /> Click the button
               below to randomize chores
             </p>
-
             <Button
               text={"Randomize"}
               handler={() => {
