@@ -7,12 +7,19 @@ import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
 import Footer from "../Footer.js";
 
+/**
+ * Day component is the main component for the Day page
+ * It displays the chores for the current day
+ *
+ * @returns {JSX.Element} Day component
+ */
 function Day() {
-  const { today, setToday, allChores, setAllChores } = useChoresContext();
-  const [loading, setLoading] = useState(false); // calls for useEffect
-  const [error, setError] = useState(""); // calls for useEffect
 
-  // Define behaviour of the day card
+  const { today, setToday, allChores, setAllChores } = useChoresContext(); // Get the chores context
+  const [loading, setLoading] = useState(false); // Loading state
+  const [error, setError] = useState(""); // Error state
+
+  
   useEffect(() => {
     // Reassignments
     if (today !== getTodayNum()) {

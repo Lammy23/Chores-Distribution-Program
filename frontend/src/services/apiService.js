@@ -1,10 +1,16 @@
 import { getRandomMonday, getRandomSunday } from "./helpers";
 
 const API_URL =
-  process.env.API_URL || "http://192.168.1.162:8000" || "http://localhost:8000";
+  process.env.API_URL || "http://192.168.1.205:8000" || "http://localhost:8000"; // TODO: Change this to the actual API URL
 
+/**
+ * Fetches all chores for the week
+ * 
+ * @param {Function} setAllChores 
+ * @param {Function} setError 
+ * @param {Function} setLoading 
+ */
 function getAllChores(setAllChores, setError, setLoading) {
-  console.log("getAllChores operation started!"); // DEBUG
   // callback function sets the state variable
   if (setLoading) {
     setLoading(true); // In case nothing needs to load
@@ -31,10 +37,16 @@ function getAllChores(setAllChores, setError, setLoading) {
       if (setLoading) {
         setLoading(false);
       }
-      console.log("getAllChores operation complete!"); // DEBUG
     });
 }
 
+/**
+ * Fetches the randomized status for the day
+ * 
+ * @param {Number} dayID 
+ * @param {Function} setRandomized 
+ * @param {Function} setError 
+ */
 function getRandomizedStatusForDay(dayID, setRandomized, setError) {
   fetch(`${API_URL}/randomized/${dayID}`)
     .then((response) => response.json())
@@ -58,6 +70,13 @@ function getRandomizedStatusForDay(dayID, setRandomized, setError) {
     });
 }
 
+/**
+ * Updates the chores for the day
+ * 
+ * @param {Number} dayID 
+ * @param {Object} chores
+ * @param {Function} setAllChores 
+ */
 function updateChoresForDay(dayID, chores, setAllChores) {
   // callback function sets the state variable
   fetch(`${API_URL}/days/${dayID}`, {
@@ -78,6 +97,13 @@ function updateChoresForDay(dayID, chores, setAllChores) {
     });
 }
 
+/**
+ * 
+ * @param {Number} dayID 
+ * @param {*} allChores 
+ * @param {*} setAllChores 
+ * @param {*} setRandomized 
+ */
 const randomizeAndUpdate = (dayID, allChores, setAllChores, setRandomized) => {
   fetch(`${API_URL}/days/${dayID}`)
     .then((response) => response.json())

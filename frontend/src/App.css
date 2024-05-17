@@ -1,3 +1,4 @@
+/* Good Practice */
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -6,6 +7,15 @@
 
 html {
   background-color: black;
+}
+
+.white-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
 }
 
 header {
@@ -31,6 +41,11 @@ header {
 p {
   font-family: Sulphur Point;
   font-size: 1rem;
+}
+
+h1 {
+  font-family: Sulphur Point;
+  font-size: 3rem;
 }
 
 .long-version {
