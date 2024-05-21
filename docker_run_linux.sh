@@ -3,7 +3,7 @@
 docker compose down
 
 # run docker-compose
-docker compose up -d
+docker compose up -d --build
 
 # Open the frontend in the default web browser
 xdg-open http://localhost:3000
