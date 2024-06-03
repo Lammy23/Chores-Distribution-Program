@@ -19,14 +19,15 @@ def construct_message(allChores):
     return message
 
 def increment_time(current_time):
+    # Adds 2 minutes to current time
     minute = current_time.minute
     hour = current_time.hour
     
-    if minute >= 59:
+    if minute >= 58:
         hour += 1
         minute = 0
     else:
-        minute += 1
+        minute += 2
     
     return {'minute': minute, 'hour': hour}
 
@@ -42,7 +43,7 @@ def whatsapp():
     constructed_message = construct_message(data)
     # Send data to the group chat using pywhatkit
     current_time = increment_time(now)
-    sendwhatmsg_to_group(group_id=group_id, message=constructed_message, time_hour=current_time['hour'], time_min=current_time['minute'], wait_time=10)
+    sendwhatmsg_to_group(group_id=group_id, message=constructed_message, time_hour=current_time['hour'], time_min=current_time['minute'], wait_time=15)
     return ''
 
 app.run()
