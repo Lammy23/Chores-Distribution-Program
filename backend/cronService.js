@@ -7,10 +7,10 @@ const DAYS = [
   "Friday",
   "Saturday",
 ];
-
+const PORT = require("./index.js").PORT;
 const CHILDREN = ["Laolu", "Ola", "Ladi", "Layide"];
 
-const API_URL = process.env.API_URL || "http://localhost";
+const API_URL = process.env.API_URL || `http://localhost:${PORT}`;
 
 function getTodayString() {
   // Function to get what day it is today
@@ -85,52 +85,6 @@ const cleanup = function (PORT) {
     .then((data) => console.log(data))
     .catch((error) => {
       console.error("Cron Schedule Error:", error);
-    });
-};
-
-const dailyAssign = function (PORT) {
-  console.log("Haha I'm running");
-  // Tuesday - Friday Assignments
-  // Part 0 Get today's number
-  const todayObject = new Date();
-  today = todayObject.getDay() + 1;
-
-  console.log("Today is ", today);
-  console.log("I'll fetch from ", today - 2);
-  // Part 1. Fetch chores from two days ago
-  fetch(`${API_URL}:${PORT}/days/${today - 2}`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.err) console.error(data.err);
-      const { sweepingAndMopping, cleaningCooker, washing, rinsing } =
-        data.chores;
-      const newChores = {
-        sweepingAndMopping: cleaningCooker,
-        cleaningCooker: sweepingAndMopping,
-        washing: rinsing,
-        rinsing: washing,
-      };
-      console.log("Just assigned new chores:\n", newChores);
-      // Part 2. Update the database
-      fetch(`${API_URL}:${PORT}/days/${today}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newChores),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.err) console.error(data.err);
-          console.log(data.message);
-          console.log("Just updated chores");
-        })
-        .catch((error) => {
-          console.error("Error updating chores for day", error);
-        });
-    })
-    .catch((error) => {
-      console.error("Error fetching chores for day", error);
     });
 };
 
@@ -214,6 +168,5 @@ module.exports = {
   getRandomSunday,
   getRandomMonday,
   cleanup,
-  dailyAssign,
   randomizeAnyway,
 };

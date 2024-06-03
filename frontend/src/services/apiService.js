@@ -1,14 +1,18 @@
-import { getRandomMonday, getRandomSunday } from "./helpers";
+import {
+  getRandomMonday,
+  getRandomOtherDays,
+  getRandomSunday,
+} from "./helpers";
 
-const API_URL =
-  process.env.API_URL || "http://192.168.1.205:8000" || "http://localhost:8000"; // TODO: Change this to the actual API URL
+const API_URL = process.env.API_URL || "http://localhost:8000"; // TODO: Change this to the actual API URL
+const WHATSAPP_BACKEND_URL = process.env.WHATSAPP_BACKEND_URL || "http://localhost:5000";
 
 /**
  * Fetches all chores for the week
- * 
- * @param {Function} setAllChores 
- * @param {Function} setError 
- * @param {Function} setLoading 
+ *
+ * @param {Function} setAllChores
+ * @param {Function} setError
+ * @param {Function} setLoading
  */
 function getAllChores(setAllChores, setError, setLoading) {
   // callback function sets the state variable
@@ -42,10 +46,10 @@ function getAllChores(setAllChores, setError, setLoading) {
 
 /**
  * Fetches the randomized status for the day
- * 
- * @param {Number} dayID 
- * @param {Function} setRandomized 
- * @param {Function} setError 
+ *
+ * @param {Number} dayID
+ * @param {Function} setRandomized
+ * @param {Function} setError
  */
 function getRandomizedStatusForDay(dayID, setRandomized, setError) {
   fetch(`${API_URL}/randomized/${dayID}`)
@@ -72,10 +76,10 @@ function getRandomizedStatusForDay(dayID, setRandomized, setError) {
 
 /**
  * Updates the chores for the day
- * 
- * @param {Number} dayID 
+ *
+ * @param {Number} dayID
  * @param {Object} chores
- * @param {Function} setAllChores 
+ * @param {Function} setAllChores
  */
 function updateChoresForDay(dayID, chores, setAllChores) {
   // callback function sets the state variable
@@ -98,24 +102,25 @@ function updateChoresForDay(dayID, chores, setAllChores) {
 }
 
 /**
- * 
- * @param {Number} dayID 
- * @param {*} allChores 
- * @param {*} setAllChores 
- * @param {*} setRandomized 
+ *
+ * @param {Number} dayID
+ * @param {*} allChores
+ * @param {*} setAllChores
+ * @param {*} setRandomized
  */
 const randomizeAndUpdate = (dayID, allChores, setAllChores, setRandomized) => {
   fetch(`${API_URL}/days/${dayID}`)
     .then((response) => response.json())
     .then((data) => {
       if (!data.randomizeBool) {
-        const chores =
-          dayID === 1
-            ? getRandomSunday()
-            : dayID === 2
-            ? getRandomMonday(allChores[0])
-            : null; // TODO: Possible future problem
-        updateChoresForDay(dayID, chores, setAllChores);
+        if (dayID === 2) { // TODO: Change this to 2
+          const newAllChores = getRandomOtherDays(allChores[0], getRandomMonday(allChores[0]));
+          newAllChores.forEach((chores, index) => {
+            updateChoresForDay(index + 1, chores, setAllChores);
+          });
+        } else if (dayID === 1) {
+          updateChoresForDay(dayID, getRandomSunday(), setAllChores);
+        }
         fetch(`${API_URL}/randomized/${dayID}`, {
           method: "PATCH",
           headers: {
@@ -132,9 +137,24 @@ const randomizeAndUpdate = (dayID, allChores, setAllChores, setRandomized) => {
     });
 };
 
+const sendChoresToWhatsApp = (allChores) => {
+  try {
+    fetch(`${WHATSAPP_BACKEND_URL}/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(allChores),
+    });
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 export {
   getAllChores,
   updateChoresForDay,
   randomizeAndUpdate,
   getRandomizedStatusForDay,
+  sendChoresToWhatsApp,
 };

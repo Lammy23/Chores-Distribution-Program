@@ -1,4 +1,5 @@
-const client = require("./db");
+const { getTodayNum } = require("./cronService.js");
+const client = require("./db.js");
 
 const getAllChores = (_, res) => {
   try {

@@ -30,6 +30,7 @@ function getRandomSunday() {
   const cleaningCooker = children.pop();
 
   const chores = {
+    day: "Sunday",
     washing: washing,
     rinsing: rinsing,
     cleaningCooker: cleaningCooker,
@@ -61,6 +62,7 @@ function getRandomMonday(sundayChores) {
   const cleaningCooker = sweepingAndCleaningCookerCandidates.pop();
 
   const chores = {
+    day: "Monday",
     washing: washing,
     rinsing: rinsing,
     cleaningCooker: cleaningCooker,
@@ -70,4 +72,53 @@ function getRandomMonday(sundayChores) {
   return chores;
 }
 
-export { getTodayString, getTodayNum, getRandomSunday, getRandomMonday };
+function getRandomOtherDays(sundayChores, mondayChores) {
+  const tuesdayChores = {
+    day: "Tuesday",
+    sweepingAndMopping: sundayChores.cleaningCooker,
+    cleaningCooker: sundayChores.sweepingAndMopping,
+    washing: sundayChores.rinsing,
+    rinsing: sundayChores.washing,
+  };
+
+  const wednesdayChores = {
+    day: "Wednesday",
+    sweepingAndMopping: mondayChores.cleaningCooker,
+    cleaningCooker: mondayChores.sweepingAndMopping,
+    washing: mondayChores.rinsing,
+    rinsing: mondayChores.washing,
+  };
+
+  const thursdayChores = {
+    day: "Thursday",
+    sweepingAndMopping: tuesdayChores.cleaningCooker,
+    cleaningCooker: tuesdayChores.sweepingAndMopping,
+    washing: tuesdayChores.rinsing,
+    rinsing: tuesdayChores.washing,
+  };
+
+  const fridayChores = {
+    day: "Friday",
+    sweepingAndMopping: wednesdayChores.cleaningCooker,
+    cleaningCooker: wednesdayChores.sweepingAndMopping,
+    washing: wednesdayChores.rinsing,
+    rinsing: wednesdayChores.washing,
+  };
+
+  return [
+    sundayChores,
+    mondayChores,
+    tuesdayChores,
+    wednesdayChores,
+    thursdayChores,
+    fridayChores,
+  ];
+}
+
+export {
+  getTodayString,
+  getTodayNum,
+  getRandomSunday,
+  getRandomMonday,
+  getRandomOtherDays,
+};
