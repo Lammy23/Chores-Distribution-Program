@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header.js";
 import ChoreCard from "../ChoreCard.js";
 import { useChoresContext } from "../context/choresContext.js";
-import { getAllChores, sendChoresToWhatsApp, updateAllChores } from "../../services/apiService.js";
+import { getAllChores, sendChoresToWhatsApp } from "../../services/apiService.js";
 // $ npm install react-loader-spinner --save
-import { Oval } from "react-loader-spinner";
 import { getTodayNum } from "../../services/helpers.js";
 import Refresh from "../Refresh.js";
 import Footer from "../Footer.js";
