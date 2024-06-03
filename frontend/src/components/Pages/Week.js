@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header.js";
 import ChoreCard from "../ChoreCard.js";
 import { useChoresContext } from "../context/choresContext.js";
-import { getAllChores } from "../../services/apiService.js";
+import { getAllChores, sendChoresToWhatsApp, updateAllChores } from "../../services/apiService.js";
 // $ npm install react-loader-spinner --save
 import { Oval } from "react-loader-spinner";
 import { getTodayNum } from "../../services/helpers.js";
@@ -34,12 +34,15 @@ function Week() {
 
         {loading ? (
           allChores.map((chores) => (
-            <ChoreCard key={chores.day} assignments={chores} loading={true}/>
+            <ChoreCard key={chores.day} assignments={chores} loading={true} />
           ))
         ) : !error ? (
-          allChores.map((chores) => (
-            <ChoreCard key={chores.day} assignments={chores} />
-          ))
+          <>
+            <div className="regular-button" onClick={() => {sendChoresToWhatsApp(allChores)}}>Send Chores to WhatsApp</div>
+            {allChores.map((chores) => (
+              <ChoreCard key={chores.day} assignments={chores} />
+            ))}
+          </>
         ) : (
           <p className="error">{error}</p>
         )}

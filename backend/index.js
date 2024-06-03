@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 // 1. npm install --save node-cron
 const cron = require("node-cron");
-const db = require("./dbService");
+const db = require("./dbService.js");
 const cronJobs = require("./cronService");
 
 // Middleware
@@ -17,7 +17,6 @@ app.use(cors());
 
 // Schedules
 cron.schedule("0 12 * * 6", () => cronJobs.cleanup(PORT));
-cron.schedule("0 0 * * 2,3,4,5", () => cronJobs.dailyAssign(PORT));
 cron.schedule("59 23 * * 0,1", () => cronJobs.randomizeAnyway(PORT));
 
 // Routes
