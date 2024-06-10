@@ -153,3 +153,6 @@ backend/.yarn/unplugged
 backend/.yarn/build-state.yml
 backend/.yarn/install-state.gz
 backend/.pnp.*
+
+# Whatsapp
+whatsapp/PyWhatKit_DB.txt
