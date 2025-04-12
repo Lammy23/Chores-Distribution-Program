@@ -1,9 +1,0 @@
-build:
-  docker:
-    web: frontend/Dockerfile
-    api: backend/Dockerfile
-    db: database/Dockerfile
-run:
-  web: npm start
-  api: node .
-  db: docker-entrypoint.sh postgres
