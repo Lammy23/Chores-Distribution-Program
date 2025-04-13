@@ -4,6 +4,9 @@
 .env
 errors.txt
 
+# Jenkins
+jenkins/secret.key
+
 # From frontend
 
 # dependencies
