@@ -3,6 +3,8 @@ services:
     build: .
     privileged: true
     user: root
+    environment:
+      - TZ=America/Edmonton
     ports:
     - 8080:8080
     - 50000:50000
