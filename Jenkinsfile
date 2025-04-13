@@ -8,7 +8,8 @@ pipeline {
                 sh '(docker stop weekly-chores-frontend && docker rm weekly-chores-frontend) || true'
             }            
         }
-        stage('Deploy') {
+        stage('Build') {
+            // Will eventually build all folders individually
             steps {
                 sh 'docker build -t weekly-chores-frontend:1.0 frontend/.'
                 sh 'docker run --name weekly-chores-frontend -p 3000:3000 -d weekly-chores-frontend:1.0'
@@ -16,3 +17,10 @@ pipeline {
         }
     }
 }
+// Testing integration
+// Testing #2
+// Testing #3
+// Testing #4
+// Testing #5
+// Testing #6
+// Testing #7
